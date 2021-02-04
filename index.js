@@ -1,14 +1,14 @@
-const Emitter = require('./emitter');
+const { EventEmitter } = require('events');
+const { SAVE } = require('./event_name');
 
-const emitter = new Emitter();
-
-//onSave
-emitter.on('save', ()=>{
+const emitter = new EventEmitter();
+//           > magic string
+emitter.on(SAVE, ()=>{
     console.log('On save activated1');
 });
 
-emitter.on('save', ()=>{
+emitter.on(SAVE, ()=>{
     console.log('On save activated2');
 });
 
-emitter.emit("save");
+emitter.emit(SAVE);
